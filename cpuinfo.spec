@@ -10,14 +10,14 @@ License:        BSD-2-Clause
 # The project has no version, this is the last git commit date YY.M.D
 Version:        23.2.14
 %define patch_level 3
-Release:        %{patch_level}.git%{?shortcommit0}%{?dist}
+Release:        %{patch_level}.git%{?shortcommit0}.rv64%{?dist}
 
 URL:            https://github.com/pytorch/%{name}
 Source0:        %{url}/archive/%{commit0}/%{name}-%{shortcommit0}.tar.gz
 # so version YY.M.D
 Patch0:         0001-cpuinfo-fedora-cmake-changes.patch
 
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
