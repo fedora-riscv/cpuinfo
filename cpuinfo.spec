@@ -20,7 +20,7 @@ Version:        23.11.04
 Summary:        A library to detect information about host CPU
 Name:           cpuinfo
 License:        BSD-2-Clause
-Release:        %{patch_level}.git%{?shortcommit0}%{?dist}
+Release:        %{patch_level}.git%{?shortcommit0}%{?dist}.1
 
 
 URL:            https://github.com/pytorch/%{name}
@@ -117,6 +117,9 @@ for cpuinfo.
 %{_libdir}/pkgconfig/lib%{name}.pc
 
 %changelog
+* Wed Jul 17 2024 Fedora Release Engineering <releng@fedoraproject.org> - 23.11.04-0.gitd6860c4.1
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
 * Sun Mar 10 2024 Tom Rix <trix@redhat.com> - 23.11.04-0.gitd6860c4
 - Update for pytorch 2.3
 
