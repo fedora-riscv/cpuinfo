@@ -5,6 +5,16 @@
 %bcond_with gitcommit
 
 %if %{with gitcommit}
+# PyTorch 2.4+ has this error
+# .../pytorch/aten/src/ATen/cpu/Utils.cpp:38:34: error: ‘cpuinfo_has_x86_amx_tile’ was not declared in this scope; did you mean ‘cpuinfo_has_x86_mmx_plus’?
+#   38 |   return cpuinfo_initialize() && cpuinfo_has_x86_amx_tile();
+#      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+#      |                                  cpuinfo_has_x86_mmx_plus
+#
+# Pick a more recent cpuinfo
+%global commit0 16bfc1622c6902d6f91d316ec54894910c620325
+Version:        24.08.07
+%define patch_level 0
 
 %else
 
@@ -77,6 +87,10 @@ for cpuinfo.
 
 %prep
 %autosetup -p1 -n %{name}-%{commit0}
+
+%if %{with gitcommit}
+sed -i -e 's@cpuinfo_VERSION 23.11.04@cpuinfo_VERSION %{version}@' CMakeLists.txt
+%endif
 
 %build
 %cmake \
