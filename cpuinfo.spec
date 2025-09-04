@@ -38,7 +38,7 @@ Source0:        %{url}/archive/%{commit0}/%{name}-%{shortcommit0}.tar.gz
 # so version YY.M.D
 Patch0:         0001-cpuinfo-fedora-cmake-changes.patch
 
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
